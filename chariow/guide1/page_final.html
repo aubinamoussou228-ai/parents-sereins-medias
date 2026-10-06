@@ -425,6 +425,8 @@ footer a{color:#b8cdd3}
 <script>
 (function(){
  var $=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+ // suivi par reseau : ?s=tiktok|instagram|facebook|whatsapp|dm -> transmis aux boutons d'achat
+ try{var sp=new URLSearchParams(location.search).get('s');if(sp){sp=sp.replace(/[^a-z0-9_-]/gi,'').slice(0,20);$('a[data-cta]').forEach(function(a){a.href=a.href.replace('utm_source=makeup','utm_source='+sp+'&utm_medium=makeup')})}}catch(e){}
  // FAQ accordeon
  $('.q button').forEach(function(b){b.addEventListener('click',function(){var q=b.parentNode,a=q.querySelector('.a'),open=q.classList.toggle('open');a.style.maxHeight=open?a.scrollHeight+'px':'0'})});
  // cartes retournables (tactile)
